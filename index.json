@@ -6,7 +6,8 @@
     "Design & Media",
     "Infrastructure & DevOps",
     "Database & Data",
-    "Automation & Integration"
+    "Automation & Integration",
+    "Analytics"
   ],
   "servers": [
     "sentry",
@@ -29,9 +30,29 @@
     "cloudflare",
     "cohesivity",
     "workato",
-    "zapier"
+    "zapier",
+    "vercel",
+    "circleci",
+    "grafana",
+    "supabase",
+    "neon",
+    "planetscale",
+    "clerk",
+    "postman",
+    "stackoverflow",
+    "miro",
+    "mermaid-chart",
+    "eraser",
+    "posthog"
   ],
   "collections": [
-    "ios"
+    "ios",
+    "web-saas",
+    "backend-apis",
+    "devops",
+    "design",
+    "payments",
+    "product-analytics",
+    "project-management"
   ]
 }
