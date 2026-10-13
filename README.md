@@ -12,9 +12,10 @@ subset shown first.
 ## Layout
 
 ```
-index.json          display order and allowed categories
+index.json          display order, categories, and collections
 servers/<id>.json   one server, server.json format
 icons/<id>.svg      its icon
+collections/<id>.json  a themed set of servers
 schema/             vendored server.json schema (2025-12-11)
 scripts/validate.mjs
 ```
@@ -67,6 +68,32 @@ versions the catalog definition, not the upstream software.
   Clients render these files, so validation rejects anything executable.
 
 `icons/workato.svg` is a placeholder until an official mark is available.
+
+## Collections
+
+A collection groups catalog servers for one kind of work, such as
+`collections/ios.json`:
+
+```json
+{
+  "title": "iOS development",
+  "description": "At most 200 characters.",
+  "servers": ["mobilebuildmcp", "figma", "sentry", "linear"]
+}
+```
+
+Every id must be a server in `index.json`, and a collection needs at least two.
+List the collection id in `index.json` `collections`; array order is display
+order.
+
+## Badge
+
+Once your server is listed, you can link to its page from your README. Linking
+is optional and has no effect on review or placement:
+
+```md
+[![Add to MCP Linker](https://img.shields.io/badge/MCP_Linker-Add-4f46e5?style=for-the-badge)](https://mcp-linker.milisp.dev/servers/<id>)
+```
 
 ## Review
 

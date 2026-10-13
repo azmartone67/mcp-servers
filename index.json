@@ -12,6 +12,7 @@
     "sentry",
     "socket",
     "parallel-search",
+    "mobilebuildmcp",
     "asana",
     "atlassian",
     "clickup",
@@ -29,5 +30,8 @@
     "cohesivity",
     "workato",
     "zapier"
+  ],
+  "collections": [
+    "ios"
   ]
 }

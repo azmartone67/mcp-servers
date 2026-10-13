@@ -100,6 +100,43 @@ for (const file of files) {
   }
 }
 
+// Collections group existing servers by use case, e.g. iOS development.
+const collectionFiles = readdirSync(join(root, "collections")).filter(f => f.endsWith(".json"));
+const listedCollections = new Set(index.collections ?? []);
+if (listedCollections.size !== (index.collections ?? []).length) {
+  fail("index.json", "collections contains duplicates");
+}
+for (const id of listedCollections) {
+  if (!collectionFiles.includes(`${id}.json`)) fail("index.json", `"${id}" has no collections/${id}.json`);
+}
+for (const file of collectionFiles) {
+  const where = `collections/${file}`;
+  const id = file.slice(0, -5);
+  if (!listedCollections.has(id)) fail(where, "not listed in index.json collections");
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id)) fail(where, "file name must be lowercase kebab-case");
+  let collection;
+  try {
+    collection = readJson(where);
+  } catch (error) {
+    fail(where, `invalid JSON (${error.message})`);
+    continue;
+  }
+  const keys = Object.keys(collection).sort().join(",");
+  if (keys !== "description,servers,title") fail(where, "must have exactly title, description, and servers");
+  if (typeof collection.title !== "string" || !collection.title || collection.title.length > 40) {
+    fail(where, "title must be 1-40 characters");
+  }
+  if (typeof collection.description !== "string" || collection.description.length > 200) {
+    fail(where, "description must be a string of at most 200 characters");
+  }
+  const members = Array.isArray(collection.servers) ? collection.servers : [];
+  if (members.length < 2) fail(where, "servers must list at least 2 servers");
+  if (new Set(members).size !== members.length) fail(where, "servers contains duplicates");
+  for (const member of members) {
+    if (!listed.has(member)) fail(where, `"${member}" is not a server in index.json`);
+  }
+}
+
 // SVGs can carry script, so only plain vector markup is accepted.
 for (const file of icons) {
   const where = `icons/${file}`;
