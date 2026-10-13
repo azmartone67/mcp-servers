@@ -1,0 +1,33 @@
+{
+  "categories": [
+    "Project Management",
+    "Development & Testing",
+    "Payments & Commerce",
+    "Design & Media",
+    "Infrastructure & DevOps",
+    "Database & Data",
+    "Automation & Integration"
+  ],
+  "servers": [
+    "sentry",
+    "socket",
+    "parallel-search",
+    "asana",
+    "atlassian",
+    "clickup",
+    "intercom",
+    "linear",
+    "notion",
+    "airtable",
+    "paypal",
+    "stripe",
+    "square",
+    "plaid",
+    "figma",
+    "invideo",
+    "cloudflare",
+    "cohesivity",
+    "workato",
+    "zapier"
+  ]
+}
