@@ -40,7 +40,7 @@ You don't need to clone anything: on GitHub, open `servers/`, choose
 pull request for you.
 
 No GitHub account? Email the server name, endpoint or package, required
-inputs, and a link to its documentation to milisp@proton.me.
+inputs, and a link to its documentation to help@milisp.dev.
 
 ### Catalog metadata
 
